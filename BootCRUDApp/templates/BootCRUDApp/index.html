@@ -1,5 +1,50 @@
+<!--to sync layout with base-->
 {% extends 'BootCRUDApp/base.html' %}
+{% load static %}
 
-{% block content %}
-<h1>In the Index Page</h1>
-{% endblock content %}
+
+
+
+{% block show %}
+
+    <!--to grab all items in database-->
+{% for item in items %}
+
+    <!--card for item display-->
+    <div class="card" style="width: 18rem;">
+
+        <a href="{% url 'edit' item.id %}" class="btn btn-primary">Edit</a>
+        <img class="card-img-top" src="{{ item.itemPicture }}" alt="Card image cap">
+
+        <div class="card-body">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text"> Price: ${{ item.price }} </p>
+        </div>
+
+        <div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ item.description }}</li>
+            </ul>
+        </div>
+
+    </div>
+
+{% endfor %}
+
+<hr/>
+
+{% endblock show %}
+
+
+
+
+{% block form %}
+<!--form for items-->
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Submit</button>
+</form>
+
+
+{% endblock form %}

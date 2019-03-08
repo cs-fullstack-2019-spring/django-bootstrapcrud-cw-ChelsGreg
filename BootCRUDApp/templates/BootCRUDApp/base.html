@@ -11,13 +11,27 @@
 </head>
 <body>
 
-<header class="jumbotron">
-    <h1>Testing Bootstrap</h1>
+<!--header-->
+<header class="jumbotron ">
+    <h1>Janky Garage</h1>
 </header>
 
-{% block content %}
+
+
+<div class="container">
+{% block show %}
+    <p>for cards</p>
+{% endblock show %}
+</div>
+
+
+
+<!--for extended pages-->
+{% block form %}
 <h1>In the Index Page</h1>
-{% endblock content %}
+{% endblock form %}
+
+
 
 </body>
 </html>
